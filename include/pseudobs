@@ -1,0 +1,17 @@
+#!/bin/bash
+PATH=/home/ppginf/razer/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
+
+CLASP=$PWD/clasp
+FORMULA=$1
+ARQ=$2
+
+RESP="$($CLASP $FORMULA | egrep '^(v|s)')"
+
+if ! grep -q "s SATISFIABLE" <<< "$RESP" ; then
+    echo UNSATISFIABLE > $ARQ
+    exit 20
+fi
+
+(grep '^v' <<< "$RESP" | tr -d 'v' | tr -d 'x' | tr -d '\n'
+echo) > $ARQ
+exit 10

@@ -1,0 +1,3 @@
+INPUT(x)
+INPUT(y)
+CLAUSE(x, y)

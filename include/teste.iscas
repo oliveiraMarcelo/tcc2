@@ -1,0 +1,4 @@
+INPUT(x)
+INPUT(y)
+z=OR(x, y)
+OUTPUT(z)
